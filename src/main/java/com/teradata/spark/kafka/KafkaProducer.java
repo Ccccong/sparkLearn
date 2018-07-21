@@ -22,4 +22,8 @@ public class KafkaProducer {
         producer=new Producer<String, Integer>(new ProducerConfig(properties));
 
     }
+
+    public static void main(String[] args) {
+        System.out.println("hello world");
+    }
 }
