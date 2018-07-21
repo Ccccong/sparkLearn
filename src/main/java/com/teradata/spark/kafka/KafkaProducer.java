@@ -24,6 +24,6 @@ public class KafkaProducer {
     }
 
     public static void main(String[] args) {
-        System.out.println("hello world and ccc");
+        System.out.println("hello world and ccc xy");
     }
 }
