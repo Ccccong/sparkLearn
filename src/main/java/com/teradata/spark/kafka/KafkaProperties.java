@@ -7,7 +7,7 @@ import java.util.List;
  * @author CCC
  * kafka常用配置文件
  */
-public class KfkProperties {
+public class KafkaProperties {
     final static String ZK = "192.168.221.12:2181";
     final static String TOPIC = "test0";
     final static String BOOTSTRAP_SERVERS = "192.168.221.12:9092,192.168.221.12:9092,192.168.221.12:9092";

@@ -9,9 +9,9 @@ import java.util.Properties;
 /**
  * 源码里面有解释
  */
-public class KafkaClientSimpleTest {
+public class KafkaProducerSimpleTest {
 
-    public KafkaClientSimpleTest() {
+    public KafkaProducerSimpleTest() {
 
         Properties props = new Properties();
         props.put("bootstrap.servers", "192.168.221.12:9092");
@@ -33,6 +33,6 @@ public class KafkaClientSimpleTest {
     }
 
     public static void main(String[] args) {
-        new KafkaClientSimpleTest();
+        new KafkaProducerSimpleTest();
     }
 }

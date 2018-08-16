@@ -10,30 +10,28 @@ import java.util.Properties;
  * @author ccc
  * kafka producer properties
  */
-public class KfkProducer extends Thread {
+public class KafkaProducer extends Thread {
     private String topic;
     private Producer<String, String> producer;
     private final Boolean isAsync;
 
 
-    public KfkProducer(String topic, Boolean isAsync) {
+    public KafkaProducer(String topic, Boolean isAsync) {
         System.out.println("start producer");
         this.topic = topic;
         this.isAsync = isAsync;
 
         Properties properties = new Properties();
+        properties.put("bootstrap.servers", KafkaProperties.BOOTSTRAP_SERVERS);
+        properties.put("acks", KafkaProperties.ACKS);
+        properties.put("retries", KafkaProperties.RETRIES);
+        properties.put("batch.size", KafkaProperties.BATCH_SIZE);
+        properties.put("linger.ms", KafkaProperties.LINGER_MS);
+        properties.put("buffer.memory", KafkaProperties.BUFFER_MEMORY);
+        properties.put("key.serializer", KafkaProperties.KEY_SERIALIZER);
+        properties.put("value.serializer", KafkaProperties.VALUE_SERIALIZER);
 
-        properties.put("bootstrap.servers", KfkProperties.BOOTSTRAP_SERVERS);
-        properties.put("acks", KfkProperties.ACKS);
-        properties.put("retries", KfkProperties.RETRIES);
-        properties.put("batch.size", KfkProperties.BATCH_SIZE);
-        properties.put("linger.ms", KfkProperties.LINGER_MS);
-        properties.put("buffer.memory", KfkProperties.BUFFER_MEMORY);
-        properties.put("key.serializer", KfkProperties.KEY_SERIALIZER);
-        properties.put("value.serializer", KfkProperties.VALUE_SERIALIZER);
-
-
-        producer = new KafkaProducer<String, String>(properties);
+        producer = new org.apache.kafka.clients.producer.KafkaProducer<String, String>(properties);
     }
 
 
@@ -57,7 +55,7 @@ public class KfkProducer extends Thread {
             ++messageNo;
 
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
             } catch (Exception e) {
                 e.printStackTrace();
             }
